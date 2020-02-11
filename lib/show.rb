@@ -15,4 +15,12 @@ class Show
     total_show_salary
   end
 
+  def highest_paid_actor
+    @characters.max_by { |character| character.salary }.actor
+
+  end
+
+  def actors
+    @characters.map { |character| character.actor }
+  end
 end
