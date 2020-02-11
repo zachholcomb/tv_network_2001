@@ -31,24 +31,20 @@ class NetworkTest < Minitest::Test
     assert_equal [@knight_rider, @parks_and_rec], @nbc.shows
   end
 
+  def test_it_can_find_main_characters
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+    assert_equal [@kitt], @nbc.main_characters
+  end
+
+  def test_it_can_sort_actor_names_by_show
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+    
+    test_hash = {
+      @knight_rider => ["David Hasselhoff", "William Daniels"],
+      @parks_and_rec => ["Amy Poehler", "Nick Offerman"]
+                }
+    assert_equal test_hash, @nbc.actors_by_show
+  end
 end
-
-
-
-
-#
-# pry(main)>
-#
-# pry(main)>
-#
-# pry(main)> nbc.shows
-# # => [#<Show:0x00007fe5f8398970...>, #<Show:0x00007fe5f88b0a20...>]
-#
-# pry(main)> nbc.main_characters
-# # => [#<Character:0x00007f98a4ba8dc8...>]
-#
-# pry(main)> nbc.actors_by_show
-# # => {
-#       #<Show:0x00007fe5f8398970...> => ["David Hasselhoff", "William Daniels"],
-#       #<Show:0x00007fe5f88b0a20...> => ["Amy Poehler", "Nick Offerman"]
-# #    }
