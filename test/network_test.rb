@@ -60,7 +60,3 @@ class NetworkTest < Minitest::Test
     assert_equal test_shows_by_actor, @nbc.shows_by_actor
   end
 end
-
-
-# pry(main)> nbc.prolific_actors
-# # => ["David Hasselhoff"]
