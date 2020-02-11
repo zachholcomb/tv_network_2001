@@ -14,14 +14,3 @@ class CharacterTest < Minitest::Test
     assert_equal 1000000, @kitt.salary
   end
 end
-
-
-
-# pry(main)> kitt.name
-# # => "KITT"
-#
-# pry(main)> kitt.actor
-# # => "William Daniels"
-#
-# pry(main)> kitt.salary
-# # => 1000000
