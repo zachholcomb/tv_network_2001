@@ -8,6 +8,11 @@ class Show
   end
 
   def total_salary
+    total_show_salary = 0
+    @characters.each do |character|
+      total_show_salary += character.salary
+    end
+    total_show_salary
   end
-  
+
 end
