@@ -32,14 +32,18 @@ class Network
   def shows_by_actor
     shows_by_actor = {}
     @shows.each do |show|
-      @characters.each do |character|
+      show.characters.each do |character|
         if shows_by_actor[character.actor]
           shows_by_actor[character.actor] << show
         else
-          shows_by_actor[character.actor] = show
+          shows_by_actor[character.actor] = [show]
         end
       end
-      shows_by_actor
     end
+    shows_by_actor
+  end
+
+  def prolific_actor
+    shows_by_actor.select { |actor, shows| shows.length >= 2}.keys
   end
 end

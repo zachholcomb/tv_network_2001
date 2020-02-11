@@ -49,7 +49,11 @@ class NetworkTest < Minitest::Test
     assert_equal test_hash, @nbc.actors_by_show
   end
 
-  def def_test_can_sort_shows_by_actors
+  def test_it_can_sort_shows_by_actors
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+    @nbc.add_show(@baywatch)
+
   test_shows_by_actor =  {
          "David Hasselhoff" => [@knight_rider, @baywatch],
          "William Daniels" => [@knight_rider],
@@ -59,4 +63,12 @@ class NetworkTest < Minitest::Test
 
     assert_equal test_shows_by_actor, @nbc.shows_by_actor
   end
+
+  def test_it_can_find_prolific_actors
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+    @nbc.add_show(@baywatch)
+    assert_equal ["David Hasselhoff"], @nbc.prolific_actor
+  end
+
 end
