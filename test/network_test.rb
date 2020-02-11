@@ -13,7 +13,8 @@ class NetworkTest < Minitest::Test
     @leslie_knope = Character.new({name: "Leslie Knope", actor: "Amy Poehler", salary: 2_000_000})
     @ron_swanson = Character.new({name: "Ron Swanson", actor: "Nick Offerman", salary: 1_400_000})
     @parks_and_rec = Show.new("Parks and Recreation", "Michael Shur & Greg Daniels", [@leslie_knope, @ron_swanson])
-
+    @mitch = Character.new({name: "Mitch Buchannon", actor: "David Hasselhoff", salary: 1_200_000})
+    @baywatch = Show.new("Baywatch", "Gregory Bonann", [@mitch])
   end
 
   def test_it_exists_and_has_attributes
@@ -40,11 +41,26 @@ class NetworkTest < Minitest::Test
   def test_it_can_sort_actor_names_by_show
     @nbc.add_show(@knight_rider)
     @nbc.add_show(@parks_and_rec)
-    
+
     test_hash = {
       @knight_rider => ["David Hasselhoff", "William Daniels"],
       @parks_and_rec => ["Amy Poehler", "Nick Offerman"]
                 }
     assert_equal test_hash, @nbc.actors_by_show
   end
+
+  def def_test_can_sort_shows_by_actors
+  test_shows_by_actor =  {
+         "David Hasselhoff" => [@knight_rider, @baywatch],
+         "William Daniels" => [@knight_rider],
+         "Amy Poehler" => [@parks_and_rec],
+         "Nick Offerman" => [@parks_and_rec]
+       }
+
+    assert_equal test_shows_by_actor, @nbc.shows_by_actor
+  end
 end
+
+
+# pry(main)> nbc.prolific_actors
+# # => ["David Hasselhoff"]

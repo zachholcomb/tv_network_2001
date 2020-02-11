@@ -29,6 +29,17 @@ class Network
     actors_by_show_hash
   end
 
-
-
+  def shows_by_actor
+    shows_by_actor = {}
+    @shows.each do |show|
+      @characters.each do |character|
+        if shows_by_actor[character.actor]
+          shows_by_actor[character.actor] << show
+        else
+          shows_by_actor[character.actor] = show
+        end
+      end
+      shows_by_actor
+    end
+  end
 end
